@@ -7,6 +7,7 @@ if TYPE_CHECKING:
 
 from bqskit.compiler.machine import MachineModel
 from bqskit.ir.gate import Gate
+from bqskit.ir.gates import ECRGate, IdentityGate
 from bqskit.ir.gates.constant.cx import CNOTGate
 from bqskit.ir.gates.constant.cz import CZGate
 from bqskit.ir.gates.constant.sx import SXGate
@@ -49,4 +50,8 @@ def _basis_gate_str_to_bqskit_gate(basis_gates: list[str]) -> set[Gate]:
             gate_set.add(SXGate())
         elif basis_gate == 'p':
             gate_set.add(RZGate())
+        elif basis_gate == 'ecr':
+            gate_set.add(ECRGate())  
+        elif basis_gate == 'id':
+            gate_set.add(IdentityGate())
     return gate_set
